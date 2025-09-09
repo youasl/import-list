@@ -1,6 +1,6 @@
 # Crops API
 
-This is a simple API to manage crops and it's related diseases.
+This is a simple API to manage crops, and it's related diseases.
 
 ## Requirements
 

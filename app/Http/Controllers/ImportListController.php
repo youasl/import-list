@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImportList;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ImportListController extends Controller
 {
 	public function index()
     {
-        return response()->json([
-            [
-                "imdbId" => "tt2866360"
-            ],
-            [
-                "imdbId" => "tt1074638"
-            ]
-        ]);
+		$path = storage_path('app/private/lists/movies.json');
+		$json = file_get_contents($path);
+
+        $data = json_decode($json, true);
+
+        $movies = collect($data['data']['titles'] ?? [])
+            ->map(function ($item) {
+                return [
+                    'imdbId' => $item['id']
+                ];
+            })
+            ->values();
+
+        return response()->json($movies);
     }
 }

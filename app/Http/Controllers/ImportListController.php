@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Validator;
 
 class ImportListController extends Controller
 {
-	public function index(){
-	    return response()->json([
-			"status" => "success",
-			"data" => []
-		], 200);
+	public function index()
+    {
+        return response()->json([
+            [
+                "imdbId" => "tt0948470"
+            ],
+            [
+                "imdbId" => "tt1074638"
+            ]
+        ]);
     }
 }
